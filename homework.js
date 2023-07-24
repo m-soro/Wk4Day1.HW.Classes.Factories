@@ -33,7 +33,7 @@ class Person {
     this.height = height; // init 0
     this.weight = weight; // init 0
     this.mood = mood; // init 0
-    this.hamsters = [hamsters]; // empty array
+    this.hamsters = []; // empty array
     this.bankAccount = bankAccount; // 0
   }
   getName = () => this.name;
