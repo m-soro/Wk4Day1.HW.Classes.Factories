@@ -3,6 +3,13 @@
  * CLASSES AND FACTORIES
  * ----------------------
  */
+
+/**
+ * --------------
+ * HAMSTER CLASS
+ * --------------
+ */
+
 class Hamster {
   constructor(owner, name, price) {
     this.owner = owner;
@@ -14,13 +21,11 @@ class Hamster {
   getPrice = () => this.price;
 }
 
-console.log("\n======== TESTING THE CLASS AND METHOD ========\n");
-const myHamster = new Hamster("Mark", "Hammy", 150);
-console.log(myHamster);
-myHamster.wheelRun();
-myHamster.eatFood();
-console.log(myHamster.getPrice());
-
+/**
+ * -------------
+ * PERSON CLASS
+ * -------------
+ */
 class Person {
   constructor(name, age, height, weight, mood, hamsters, bankAccount) {
     this.name = name; // init 0
@@ -94,3 +99,57 @@ console.log(timmy.eat());
 console.log(timmy.eat());
 console.log(timmy.excercise());
 console.log(timmy.excercise());
+
+/**
+ * ----------------------
+ * DINNER AND CHEF CLASS
+ * ----------------------
+ * Chef should be a factory of Dinner
+ * Add a constructor to dinner that sets the string properties,
+   appetizer, entree and dessert.
+ * Add a method on chef that takes three arguments and returns a
+   new Dinner based on those arguments.
+ * Have the Chef create 3 dinners, log the dinners
+ */
+
+class Dinner {
+  constructor(appetizer, entree, dessert) {
+    this.appetizer = appetizer;
+    this.entree = entree;
+    this.dessert = dessert;
+  }
+}
+
+/**
+ * --------------------
+ * CHEF MAKING DINNERS
+ * --------------------
+ * Class Chef is a factory of dinner
+ */
+
+class Chef {
+  constructor(factoryType) {
+    this.factoryType = factoryType;
+    this.dinnerCollection = [];
+  }
+  makeDinners = (d1, d2, d3) => {
+    const dinner = new Dinner(d1, d2, d3);
+    this.dinnerCollection.push(dinner);
+    console.log(`\nChef has created a scrupmtious dinner. Buon Apetito!\n`);
+    console.log(dinner);
+  };
+  dinnerCount = () =>
+    `\nThe chef has created : ${this.dinnerCollection.length} set dinners.\n`;
+}
+
+console.log("\n======== CHEF CLASS ========\n");
+
+const dinnerChef = new Chef("dinner");
+
+//prettier-ignore
+dinnerChef.makeDinners("Seared Diver Scallops","Grilled Pork Korobuta","Nana's Panacotta");
+//prettier-ignore
+dinnerChef.makeDinners("Grilled Lamb Chops", "Wild Atlantic Salmon", "6 Layer Chocolate Cake");
+//prettier-ignore
+dinnerChef.makeDinners("Wild Goose Pate", "Seared Kobe Rib Eye", "Tiffany's Crepe Suzette");
+console.log(dinnerChef.dinnerCount());
