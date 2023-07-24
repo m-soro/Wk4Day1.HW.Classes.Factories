@@ -15,7 +15,7 @@ class Hamster {
 }
 
 console.log("\n======== TESTING THE CLASS AND METHOD ========\n");
-const myHamster = new Hamster("Mark", "Hammy", 200);
+const myHamster = new Hamster("Mark", "Hammy", 150);
 console.log(myHamster);
 myHamster.wheelRun();
 myHamster.eatFood();
@@ -23,7 +23,7 @@ console.log(myHamster.getPrice());
 
 class Person {
   constructor(name, age, height, weight, mood, hamsters, bankAccount) {
-    this.namne = name; // init 0
+    this.name = name; // init 0
     this.age = age; // init 0
     this.height = height; // init 0
     this.weight = weight; // init 0
@@ -35,17 +35,18 @@ class Person {
   getAge = () => this.age;
   getWeight = () => this.weight;
   greet = () => console.log(`Hi! I'm ${this.name}`);
-  eat = () => (this.weight += 1) && (this.mood += 1);
-  excercise = () => (this.weight -= 1);
-  ageUp = () =>
-    (this.age += 1) &&
-    (this.height += 1) &&
-    (this.mood += 1) &&
-    (this.bankAccount += 1);
+  eat = () =>
+    `Weight and mood increased ${(this.weight += 1)}, ${(this.mood += 1)}`;
+  excercise = () => `Weight decreased ${(this.weight -= 1)}`;
+  ageUp = (age) =>
+    `AgeUp => Age: ${(this.age +=
+      age)} , Height: ${(this.height += 1)}, Mood: ${(this.mood += 1)}
+              BankAccount: ${(this.bankAccount += 1)}`;
   buyHamster = (hamster) =>
     this.hamsters.push(hamster) &&
-    (this.mood += 10) &&
-    (this.bankAccount -= hamster.getPrice());
+    `I bought a Hamster! his name is ${hamster.name}! 
+    Mood: ${(this.mood += 10)} Bank Account: ${(this.bankAccount -=
+      hamster.getPrice())}`;
 }
 
 /**
@@ -66,3 +67,30 @@ class Person {
  * (10)Have Timmy eat twice
  * (11)Have Timmy exercise twice
  */
+
+// name, age, height-assuming cm, weight-assuming lbs, mood(1-100), hamsters, bankAccount
+const timmy = new Person("Timmy", 5, 152, 120, 60, 0, 500);
+console.log("\n======== TIMMY'S STORY ========\n");
+console.log(timmy);
+console.log(timmy.eat());
+console.log(timmy.eat());
+console.log(timmy.eat());
+console.log(timmy.eat());
+console.log(timmy.eat());
+console.log(timmy.excercise());
+console.log(timmy.excercise());
+console.log(timmy.excercise());
+console.log(timmy.excercise());
+console.log(timmy.excercise());
+console.log(timmy.ageUp(9));
+
+console.log("\n======== TIMMY'S HAMSTER AND OLDER YEARS ========\n");
+const gus = new Hamster("Timmy", "Gus", 100);
+console.log(timmy);
+console.log(timmy.buyHamster(gus));
+console.log(timmy.hamsters);
+console.log(timmy.ageUp(15));
+console.log(timmy.eat());
+console.log(timmy.eat());
+console.log(timmy.excercise());
+console.log(timmy.excercise());
