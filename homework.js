@@ -11,10 +11,10 @@
  */
 
 class Hamster {
-  constructor(owner, name, price) {
+  constructor(owner, name) {
     this.owner = owner;
     this.name = name;
-    this.price = price;
+    this.price = 15;
   }
   wheelRun = () => console.log("squeak squeak");
   eatFood = () => console.log("nibble nibble");
@@ -90,7 +90,7 @@ console.log(timmy.excercise());
 console.log(timmy.ageUp(9));
 
 console.log("\n======== TIMMY'S HAMSTER AND OLDER YEARS ========\n");
-const gus = new Hamster("Timmy", "Gus", 100);
+const gus = new Hamster("Timmy", "Gus");
 console.log(timmy);
 console.log(timmy.buyHamster(gus));
 console.log(timmy.hamsters);
